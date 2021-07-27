@@ -1,0 +1,15 @@
+name: 'discord-action'
+description: 'Send a message to a Discord webhook.'
+branding:
+  color: 'purple'
+  icon: 'message-square'
+inputs:
+  webhook:
+    description: 'Discord webhook URL'
+    required: true
+  message:
+    description: 'Message to be sent'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
