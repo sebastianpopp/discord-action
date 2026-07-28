@@ -1,22 +1,20 @@
 const core = require('@actions/core');
-const axios = require('axios');
 
-try {
-  const webhook = core.getInput('webhook');
-  const message = core.getInput('message');
+async function run() {
+  const webhook = core.getInput('webhook', { required: true });
+  const message = core.getInput('message', { required: true });
 
-  const options = {
+  const response = await fetch(webhook, {
     method: 'POST',
-    url: webhook,
-    headers: {'Content-Type': 'application/json'},
-    data: {content: message}
-  };
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content: message })
+  });
 
-  axios
-    .request(options)
-    .then(() => {
-      core.info('Message was sent successfully');
-    });
-} catch (error) {
-  core.setFailed(error.message);
+  if (!response.ok) {
+    throw new Error(`Discord webhook request failed with status ${response.status}: ${await response.text()}`);
+  }
+
+  core.info('Message was sent successfully');
 }
+
+run().catch((error) => core.setFailed(error.message));

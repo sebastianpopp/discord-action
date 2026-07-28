@@ -11,5 +11,5 @@ inputs:
     description: 'Message to be sent'
     required: true
 runs:
-  using: 'node16'
+  using: 'node24'
   main: 'index.js'

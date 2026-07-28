@@ -1,8 +1,11 @@
 {
   "name": "discord-action",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Send a message to a Discord webhook.",
   "main": "index.js",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +21,9 @@
   },
   "homepage": "https://github.com/sebastianpopp/discord-action#readme",
   "dependencies": {
-    "@actions/core": "^1.4.0",
-    "axios": "^0.21.1"
+    "@actions/core": "^1.11.1"
+  },
+  "overrides": {
+    "undici": "^6.28.0"
   }
 }

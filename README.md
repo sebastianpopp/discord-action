@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: discord
-      uses: sebastianpopp/discord-action@releases/v2
+      uses: sebastianpopp/discord-action@v3
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
         message: ${{ github.repository }} has been successfullly deployed.
